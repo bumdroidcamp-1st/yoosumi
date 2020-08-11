@@ -24,7 +24,11 @@ class RecordFragment : Fragment() {
 
         // 생성자에 변수가 포함된 viewModel을 생성할 때는 Factory를 통해 주입해줘야 한다.
 
+
+        //이 부분에서 안되는 것 같아요..ㅜ 프래그먼트라 this 대신 requireContext()를 넣었는데 이게 문제인건가요??
+        ////////////////////////////////////////////////////////////////////////////////////////////
         val viewModelFactory = MainViewModelFactory(PlanDatabase.getInstance(requireContext()).dao)
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         Log.i("ViewModel","Button Click")
         // 위에서 만든 Factory를 넣어줘서 뷰모델을 생성
