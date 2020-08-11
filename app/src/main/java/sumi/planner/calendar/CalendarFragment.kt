@@ -21,7 +21,6 @@ class CalendarFragment : Fragment() {
     ): View? {
         val binding= FragmentCalendarBinding.inflate(inflater,container,false)
 
-
         // By ID we can use each component
         // which id is assign in xml file
         // use findViewById() to get the
