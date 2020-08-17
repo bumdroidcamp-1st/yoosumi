@@ -1,11 +1,14 @@
 package sumi.planner.calendar
 
 import android.util.Log
+import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 import androidx.lifecycle.*
+import androidx.navigation.findNavController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import sumi.planner.MainActivity
+import sumi.planner.R
 import sumi.planner.db.PlanDao
 import sumi.planner.db.PlanEntity
 
@@ -29,12 +32,16 @@ class MainViewModel(private val dao: PlanDao) : ViewModel() {
         return text
     }
 
-    fun submitDB(editText: EditText) {
+    fun submitDB(view:View,editText:EditText) {
         // db에 drink entity를 저장한다.
-        Log.i("ViewModel","Button Click")
+        planModel.value = Plan(1,editText.text.toString())
         viewModelScope.launch(Dispatchers.IO) {
             dao.insert(PlanEntity(planContents = editText.text.toString()))
         }
-        editText.text=null
+        view.findNavController().navigate(R.id.action_recordFragment_to_calendarFragment)
+    }
+
+    fun cancel(view:View){
+        view.findNavController().navigate(R.id.action_recordFragment_to_calendarFragment)
     }
 }

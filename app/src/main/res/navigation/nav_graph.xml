@@ -14,5 +14,10 @@
     <fragment
         android:id="@+id/recordFragment"
         android:name="sumi.planner.calendar.RecordFragment"
-        android:label="RecordFragment" />
+        android:label="RecordFragment" >
+        <action
+            android:id="@+id/action_recordFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment"
+            app:popUpTo="@id/calendarFragment" />
+    </fragment>
 </navigation>

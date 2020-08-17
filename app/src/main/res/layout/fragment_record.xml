@@ -29,19 +29,18 @@
             android:layout_height="300dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.225" />
+            app:layout_constraintVertical_bias="0.22" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/cancel_icon"
             android:layout_width="100dp"
             android:layout_height="50dp"
-
+            android:onClick="@{(view) -> viewModel.cancel(view)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.762"
@@ -54,7 +53,7 @@
             android:id="@+id/save_icon"
             android:layout_width="100dp"
             android:layout_height="50dp"
-
+            android:onClick="@{(view) -> viewModel.submitDB(view,editContent)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cancel_icon"
             app:layout_constraintHorizontal_bias="0.562"
@@ -62,17 +61,6 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_content"
             app:layout_constraintVertical_bias="0.26"
             app:lottie_fileName="save_icon.json" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            android:onClick="@{() -> viewModel.submitDB(editContent)}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/save_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
