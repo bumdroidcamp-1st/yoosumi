@@ -2,6 +2,7 @@ package sumi.planner.calendar
 
 import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,5 +35,6 @@ class MainViewModel(private val dao: PlanDao) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             dao.insert(PlanEntity(planContents = editText.text.toString()))
         }
+        editText.text=null
     }
 }

@@ -1,8 +1,6 @@
 package sumi.planner.db
 
 import android.content.Context
-import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -13,15 +11,17 @@ abstract class PlanDatabase : RoomDatabase() {
 
     companion object {
         private var INSTANCE: PlanDatabase? = null
-        fun getInstance(context: Context): PlanDatabase {
+        fun getInstance(context: Context?): PlanDatabase {
 
             synchronized(this) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(
-                        context.applicationContext,
-                        PlanDatabase::class.java,
-                        "plan_database")
-                        .build()
+                    if (context != null) {
+                        INSTANCE = Room.databaseBuilder(
+                            context.applicationContext,
+                            PlanDatabase::class.java,
+                            "plan_database")
+                            .build()
+                    }
                 }
                 return INSTANCE as PlanDatabase
             }

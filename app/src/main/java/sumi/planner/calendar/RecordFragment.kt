@@ -1,15 +1,12 @@
 package sumi.planner.calendar
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import sumi.planner.R
 import sumi.planner.databinding.FragmentRecordBinding
 import sumi.planner.db.PlanDatabase
 
@@ -27,7 +24,7 @@ class RecordFragment : Fragment() {
 
         //이 부분에서 안되는 것 같아요..ㅜ 프래그먼트라 this 대신 requireContext()를 넣었는데 이게 문제인건가요??
         ////////////////////////////////////////////////////////////////////////////////////////////
-        val viewModelFactory = MainViewModelFactory(PlanDatabase.getInstance(requireContext()).dao)
+        val viewModelFactory = MainViewModelFactory(PlanDatabase.getInstance(activity).dao)
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         Log.i("ViewModel","Button Click")
@@ -36,6 +33,8 @@ class RecordFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+
 
         return binding.root
 
